@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
 
           {/* İçerik */}
           <div className="relative h-full flex flex-col items-center justify-center">
-  <h1 className="text-white font-bold text-6xl">
+  <h1 className="text-white font-bold text-5xl">
     {Array.from("FATIH YAVUZ").map((char, index) => (
       <span
         key={index}
