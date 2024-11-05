@@ -7,6 +7,9 @@ const Header = () => {
     const [text, setText] = useState('md:text-white');
     const [text2, setText2] = useState('text-white');
     const [isOpen, setIsOpen] = useState(false);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     useEffect(() => {
         const handleScroll = () => {

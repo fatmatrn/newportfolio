@@ -126,7 +126,7 @@ const Carousel = () => {
   const endIndex = startIndex + imagesPerSlide;
 
   return (
-    <div id="portfolio" className="relative h-screen w-full bg-white pb-10 flex flex-col justify-center items-center">
+    <div id="portfolio" className="relative h-screen w-full bg-white p-10 pt-20 flex flex-col justify-center items-center">
       <h1 className="text-4xl font-bold text-center text-blue-950 mb-5">PORTFOLIO</h1>
 
       {/* Filter Buttons */}
@@ -145,7 +145,9 @@ const Carousel = () => {
       </div>
 
       {/* Carousel container */}
-      <div className="grid gap-4 overflow-hidden rounded-lg h-[80%] w-full max-w-10xl min-w-5xl px-5 md:px-10 grid-cols-1 grid-rows-1 md:grid-cols-4 md:grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 ">
+      {/* Carousel container */}
+<div className="grid gap-4 overflow-hidden rounded-lg h-[80%] w-full max-w-10xl min-w-5xl px-5 md:px-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:grid-rows-2">
+
         {visibleImages.length > 0 ? (
           visibleImages.slice(startIndex, endIndex).map((image, index) => (
             <div key={index} className="relative w-full h-80 md:h-48 lg:h-56 overflow-hidden rounded-md duration-700 ease-in-out image-container">
@@ -156,7 +158,7 @@ const Carousel = () => {
             {/* Overlay with button */}
             <div className="hover-overlay absolute inset-0 bg-white opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center text-center">
               <h3 className="text-lg text-blue-700 font-bold mb-2">{image.header}</h3>
-              <p className="text-sm mb-3">{image.desc}</p>
+              <p className=" sm:text-sm mb-3">{image.desc}</p>
               <a href={image.link} target="_blank" rel="noopener noreferrer">
                 <button className="px-4 py-2 bg-orange-700 text-white rounded-md hover:bg-blue-800">Learn More</button>
               </a>
@@ -176,7 +178,7 @@ const Carousel = () => {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full ${index === currentSlide ? "bg-red-500" : "bg-gray-300"}`}
+            className={`w-3 h-3 rounded-full ${index === currentSlide ? "bg-gray-500" : "bg-gray-300"}`}
             aria-label={`Slide ${index + 1}`}
           ></button>
         ))}
@@ -184,10 +186,10 @@ const Carousel = () => {
 
       {/* Slider controls */}
       <button
-        onClick={handlePrev}
-        className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        
+        className="absolute top-20 left-0 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
       >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-700 group-hover:bg-blue-800 group-focus:ring-4 group-focus:ring-blue-500">
+        <span  onClick={handlePrev} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 group-hover:bg-gray-800 group-focus:ring-4 group-focus:ring-gray-400">
           <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
           </svg>
@@ -195,10 +197,10 @@ const Carousel = () => {
         </span>
       </button>
       <button
-        onClick={handleNext}
-        className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      
+        className="absolute top-20 right-0 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
       >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-orange-500 group-hover:bg-orange-600 group-focus:ring-4 group-focus:ring-orange-300">
+        <span   onClick={handleNext} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 group-hover:bg-gray-800 group-focus:ring-4 group-focus:ring-gray-400">
           <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 9l4-4-4-4" />
           </svg>

@@ -6,7 +6,7 @@ import { FaKaggle } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
-      <footer id="contact" className="relative bottom-0 !bg-white   px-4 text-center w-full z-10">
+      <footer id="contact" className="relative bottom-0 !bg-white   px-4 text-center w-full z-10  border-t border-gray-600">
         <h2 className="text-4xl text-gray-700 font-bold pt-8 pb-16">Get in Touch</h2>
         
         <div className="flex justify-center pb-16 sm:gap-40 gap-10 ">
