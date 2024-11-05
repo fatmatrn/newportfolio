@@ -1,6 +1,5 @@
 
-import About from './../components/about/index';
-import Carousel from './../components/projects/index';
+import About from '../components/about';
 
 
 export default function Home() {
@@ -8,7 +7,8 @@ export default function Home() {
   
    <div className="">
     <About/>
-    <Carousel/>
+
+    
    </div>
    
    

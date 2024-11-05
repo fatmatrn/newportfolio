@@ -27,7 +27,7 @@ const About = () => {
   }, []);
 
   return (
-    <div
+    <div id="about"
       ref={aboutRef}
       className={`bg-gray-800 text-white py-16 px-6 lg:px-20 min-h-screen flex flex-col lg:flex-row items-center space-y-10 lg:space-y-0 lg:space-x-10 transition duration-300 ease-in-out ${
         isVisible ? 'animate-fadeIn' : '' // Yalnızca görünürken animasyon uygulansın
@@ -36,7 +36,7 @@ const About = () => {
       {/* Left: Image with animation */}
       <div className="lg:w-1/2 mb-10 lg:mb-0 relative">
         <img
-          src="/media/memili.jpeg"
+          src="/media/photo.jpeg"
           alt="Data Scientist Profile"
           className={`w-full max-w-sm h-auto rounded-lg shadow-lg mx-auto relative z-10 transition-transform duration-300 ${
             isVisible ? 'hover:scale-105' : ''
@@ -54,11 +54,11 @@ const About = () => {
         </h1>
 
         {/* Summary */}
-        <p className="text-lg leading-relaxed mb-8 animate-fade-in text-orange-100">
-          As a Data Scientist, I transform raw data into meaningful insights, applying machine learning algorithms and statistical techniques to solve complex problems.
+        <p className="text-lg text-center leading-relaxed mb-8 animate-fade-in text-orange-100">
+        I am a passionate data analyst. My passion for the software world dates back many years. When I realized the increasing importance of data each day, I decided to improve myself to turn this passion into professionalism.
         </p>
-        <p className="text-lg leading-relaxed mb-8 animate-fade-in text-orange-100">
-          With expertise in Python, R, SQL, and data visualization tools like Tableau and PowerBI, I empower businesses with data-driven decisions.
+        <p className="text-lg text-center leading-relaxed mb-8 animate-fade-in text-orange-100">
+        After a long and arduous training period, I proved my competence by taking responsibility for various projects. I also took part in many projects with diverse teams. With the advantage of my youth and energy, I learn new things every day, and I know that this learning will never end.
         </p>
 
         {/* Skills */}
