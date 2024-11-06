@@ -6,6 +6,7 @@ import { FaKaggle } from "react-icons/fa";
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Carousel from '../components/projects';
+import Parallax from "../components/parallax";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -106,6 +107,7 @@ export default function RootLayout({ children }) {
         </div>
         {/* Çocuk elemanlar */}
         <main className="relative z-10">{children}</main>
+        <Parallax/>
         <Carousel/>
       </div>
       <Footer /> {/* Footer burada sabit olarak en alta yerleştirildi */}

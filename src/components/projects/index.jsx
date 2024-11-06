@@ -1,11 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css"
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeFilter, setActiveFilter] = useState("all"); // Default filter
-  const images = [
+  const [activeFilter, setActiveFilter] = useState("all"); 
+  const [imagesPerSlide, setimagesPerSlide] = useState(window.innerWidth >= 1280 ? 8 : 1); 
+  
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1280);
+ const images = [
      { 
       src: "/media/projects/evanaliz.jpeg", 
       category: "TABLEAU", 
@@ -99,6 +102,15 @@ const Carousel = () => {
       link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Student-Performance-Factors-Analysis"
     }
   ];
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1280); // Büyük ekran sınırını biraz yukarı çekiyoruz
+    };
+  
+    handleResize(); // İlk yüklemede de ekran boyutunu kontrol eder
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   
   
 
@@ -106,7 +118,7 @@ const Carousel = () => {
 
   const visibleImages = images.filter((image) => activeFilter === "all" || image.category === activeFilter);
 
-  const imagesPerSlide = 8; // Display 8 images per slide
+
 
   const handlePrev = () => {
     setCurrentSlide((prevSlide) => (prevSlide === 0 ? Math.max(0, Math.ceil(visibleImages.length / imagesPerSlide) - 1) : prevSlide - 1));
@@ -143,8 +155,9 @@ const Carousel = () => {
           </button>
         ))}
       </div>
-
-      {/* Carousel container */}
+      {/* buyuk ekran */}
+      {isLargeScreen ? (
+     <div>
       {/* Carousel container */}
 <div className="grid gap-4 overflow-hidden rounded-lg h-[80%] w-full max-w-10xl min-w-5xl px-5 md:px-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:grid-rows-2">
 
@@ -207,8 +220,100 @@ const Carousel = () => {
           <span className="sr-only">Sonraki</span>
         </span>
       </button>
+      </div> ):
+     
+      (
+
+        <div id="custom-carousel" className="relative w-full">
+        {/* Carousel wrapper */}
+        <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+          {visibleImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute duration-700 ease-in-out w-full h-full ${
+                index === currentSlide ? "block" : "hidden"
+              }`}
+            >
+              <img
+                src={image.src}
+                className="absolute block w-90% pb-20 h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                alt={image.header}
+              />
+            </div>
+          ))}
+        </div>
+      
+        {/* Slider indicators */}
+        <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+          {visibleImages.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              className={`w-3 h-3 rounded-full ${
+                index === currentSlide ? "bg-gray-500" : "bg-gray-300"
+              }`}
+              aria-current={index === currentSlide}
+              aria-label={`Slide ${index + 1}`}
+              onClick={() => setCurrentSlide(index)}
+            ></button>
+          ))}
+        </div>
+      
+        {/* Slider controls */}
+        <button
+          type="button"
+          className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          onClick={handlePrev}
+        >
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70">
+            <svg
+              className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 1 1 5l4 4"
+              />
+            </svg>
+            <span className="sr-only">Previous</span>
+          </span>
+        </button>
+        <button
+          type="button"
+          className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          onClick={handleNext}
+        >
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70">
+            <svg
+              className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+            <span className="sr-only">Next</span>
+          </span>
+        </button>
+      </div>
+      
+      )}
+
     </div>
   );
 };
 
 export default Carousel;
+
+
