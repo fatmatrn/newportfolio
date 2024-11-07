@@ -107,8 +107,9 @@ export default function RootLayout({ children }) {
         </div>
         {/* Çocuk elemanlar */}
         <main className="relative z-10">{children}</main>
-        <Parallax/>
+       
         <Carousel/>
+        <Parallax/>
       </div>
       <Footer /> {/* Footer burada sabit olarak en alta yerleştirildi */}
          

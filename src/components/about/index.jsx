@@ -49,8 +49,8 @@ const About = () => {
       {/* Right: Title, Summary, and Skills with animation */}
       <div className="lg:w-1/2 lg:pl-16 space-y-6">
         {/* Title */}
-        <h1 className="text-5xl font-extrabold text-orange-500 mb-6 animate-text glow text-shadow-md transition-all duration-300 ease-in-out hover:text-blue-500 flex justify-center items-center">
-          About Me
+        <h1 className="text-3xl font-extrabold text-orange-500 mb-6 animate-text glow text-shadow-md transition-all duration-300 ease-in-out hover:text-blue-500 flex justify-center items-center">
+          ABOUT ME
         </h1>
 
         {/* Summary */}

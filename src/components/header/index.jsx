@@ -49,7 +49,7 @@ const Header = () => {
 
     return (
         <nav className={`fixed w-full top-0 left-0 z-20 transition-all duration-300 ${navbarBg}`}>
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-1">
                 <a href="#" className="flex items-center space-x-3">
                     <img src="./media/icons/whiteicon.jpeg" className="h-10 rounded-full border-2 border-orange-500" alt="Logo" />
                     <span className={`self-center ${text2} text-2xl font-semibold whitespace-nowrap `}>FATIH YAVUZ</span>

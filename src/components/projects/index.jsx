@@ -3,114 +3,120 @@ import React, { useEffect, useState } from "react";
 import "./style.css"
 
 const Carousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeFilter, setActiveFilter] = useState("all"); 
-  const [imagesPerSlide, setimagesPerSlide] = useState(window.innerWidth >= 1280 ? 8 : 1); 
-  
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1280);
- const images = [
-     { 
-      src: "/media/projects/evanaliz.jpeg", 
-      category: "TABLEAU", 
-      header: "EV Sales Analysis", 
-      desc: "In this Tableau dashboard, I analyzed data related to electric vehicle (EV) sales in Washington state, USA.",
-      link: "https://public.tableau.com/app/profile/fat.h.yavuz/viz/EVANALYSISWASHINGTON_17289124124420/ELOCTONICVEHICLEANALYSIS-WA"
-    },
 
-  
+  const images = [
     { 
-      src: "/media/projects/amazonsales.jpeg", 
-      category: "EDA", 
-      header: "Amazon Sales EDA Project", 
-      desc: "In this project, I analyzed Amazon sales data. After cleaning the data to remove any inconsistencies, I used professional visualizations to conduct a comprehensive analysis.",
-      link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Amazom%20Sales"
-    },  
-    { 
-      src: "/media/projects/auto2.jpeg", 
-      category: "TABLEAU", 
-      header: "Auto Sales Dashboard ", 
-      desc: "This dashboard visualizes various aspects of product sales over time, including country-based sales and other key features.",
-      link: "https://public.tableau.com/app/profile/fat.h.yavuz/viz/Auto-Sales-Dashoardfinalversion1/Dashboard1"
-    },     { 
-      src: "/media/projects/globalsuperstore.jpeg", 
-      category: "POWER BI", 
-      header: "Global Superstore Analysis", 
-      desc: "Performance insights from a global superstore's sales data.",
-      link: "https://github.com/fatihhyavuz/Power-BI-Project/tree/main/global-superstore-project"
-    }, { 
-      src: "/media/projects/imdbeda.jpeg", 
-      category: "EDA", 
-      header: "IMDB Movie Ratings Analysis", 
-      desc: "Analyzing patterns and trends in IMDB movie ratings.",
-      link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Mini%20EDA%20and%20Data%20Visualiztion%20Project"
-    },{ 
-      src: "/media/projects/maraton.jpeg", 
-      category: "EDA", 
-      header: "Marathon Performance Data", 
-      desc: "Insights into marathon performance and participant trends.",
-      link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Ultra-Marathon-Runing"
-    },
-    { 
-      src: "/media/projects/autosales.jpeg", 
-      category: "EDA", 
-      header: "Auto Sales Analysis", 
-      desc: "This project involved exploring and analyzing product sales data to uncover patterns and trends in various product categories",
-      link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Auto%20Sales%20EDA"
-    },
-    { 
-      src: "/media/projects/bikesales.jpeg", 
-      category: "TABLEAU", 
-      header: "Bike Sales Trends", 
-      desc: "Exploring recent trends in bike sales across different regions.",
-      link: "https://public.tableau.com/app/profile/fat.h.yavuz/viz/udemy-project-2/SalesDashboard"
-    },  { 
-      src: "/media/projects/amazon2.jpeg", 
-      category: "POWER BI", 
-      header: "Amazon Sales Analysis", 
-      desc: "An in-depth analysis of Amazon sales trends and metrics.",
-      link: "https://github.com/fatihhyavuz/Power-BI-Project/tree/main/Amazon-Sales-Dashboard"
-    },
+     src: "/media/projects/evanaliz.jpeg", 
+     category: "TABLEAU", 
+     header: "EV Sales Analysis", 
+     desc: "In this Tableau dashboard, I analyzed data related to electric vehicle (EV) sales in Washington state, USA.",
+     link: "https://public.tableau.com/app/profile/fat.h.yavuz/viz/EVANALYSISWASHINGTON_17289124124420/ELOCTONICVEHICLEANALYSIS-WA"
+   },
+
  
-  
-    
-    { 
-      src: "/media/projects/markets.jpeg", 
-      category: "POWER BI", 
-      header: "Market Sales Overview", 
-      desc: "A comprehensive overview of sales trends in various markets.",
-      link: "https://github.com/fatihhyavuz/Power-BI-Project/tree/main/online-market%20project"
-    },
-    { 
-      src: "/media/projects/netflixeda.jpeg", 
-      category: "EDA", 
-      header: "Netflix Data Analysis", 
-      desc: "Exploring viewing trends and popular genres on Netflix.",
-      link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/netflix"
-    },
-    { 
-      src: "/media/projects/pizzasales.jpeg", 
-      category: "POWER BI", 
-      header: "Pizza Sales Insights", 
-      desc: "A look into pizza sales and customer preferences.",
-      link: "https://github.com/fatihhyavuz/Power-BI-Project/tree/main/Pizza%20Sales%20Project"
-    },
-    { 
-      src: "/media/projects/stdperform.jpeg", 
-      category: "EDA", 
-      header: "Student Performance Analysis", 
-      desc: "Analyzing student performance data for educational insights.",
-      link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Student-Performance-Factors-Analysis"
-    }
-  ];
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1280); // Büyük ekran sınırını biraz yukarı çekiyoruz
-    };
-  
-    handleResize(); // İlk yüklemede de ekran boyutunu kontrol eder
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+   { 
+     src: "/media/projects/amazonsales.jpeg", 
+     category: "EDA", 
+     header: "Amazon Sales EDA Project", 
+     desc: "In this project, I analyzed Amazon sales data. After cleaning the data to remove any inconsistencies, I used professional visualizations to conduct a comprehensive analysis.",
+     link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Amazom%20Sales"
+   },  
+   { 
+     src: "/media/projects/auto2.jpeg", 
+     category: "TABLEAU", 
+     header: "Auto Sales Dashboard ", 
+     desc: "This dashboard visualizes various aspects of product sales over time, including country-based sales and other key features.",
+     link: "https://public.tableau.com/app/profile/fat.h.yavuz/viz/Auto-Sales-Dashoardfinalversion1/Dashboard1"
+   },     { 
+     src: "/media/projects/globalsuperstore.jpeg", 
+     category: "POWER BI", 
+     header: "Global Superstore Analysis", 
+     desc: "Performance insights from a global superstore's sales data.",
+     link: "https://github.com/fatihhyavuz/Power-BI-Project/tree/main/global-superstore-project"
+   }, { 
+     src: "/media/projects/imdbeda.jpeg", 
+     category: "EDA", 
+     header: "IMDB Movie Ratings Analysis", 
+     desc: "Analyzing patterns and trends in IMDB movie ratings.",
+     link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Mini%20EDA%20and%20Data%20Visualiztion%20Project"
+   },{ 
+     src: "/media/projects/maraton.jpeg", 
+     category: "EDA", 
+     header: "Marathon Performance Data", 
+     desc: "Insights into marathon performance and participant trends.",
+     link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Ultra-Marathon-Runing"
+   },
+   { 
+     src: "/media/projects/autosales.jpeg", 
+     category: "EDA", 
+     header: "Auto Sales Analysis", 
+     desc: "This project involved exploring and analyzing product sales data to uncover patterns and trends in various product categories",
+     link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Auto%20Sales%20EDA"
+   },
+   { 
+     src: "/media/projects/bikesales.jpeg", 
+     category: "TABLEAU", 
+     header: "Bike Sales Trends", 
+     desc: "Exploring recent trends in bike sales across different regions.",
+     link: "https://public.tableau.com/app/profile/fat.h.yavuz/viz/udemy-project-2/SalesDashboard"
+   },  { 
+     src: "/media/projects/amazon2.jpeg", 
+     category: "POWER BI", 
+     header: "Amazon Sales Analysis", 
+     desc: "An in-depth analysis of Amazon sales trends and metrics.",
+     link: "https://github.com/fatihhyavuz/Power-BI-Project/tree/main/Amazon-Sales-Dashboard"
+   },
+
+ 
+   
+   { 
+     src: "/media/projects/markets.jpeg", 
+     category: "POWER BI", 
+     header: "Market Sales Overview", 
+     desc: "A comprehensive overview of sales trends in various markets.",
+     link: "https://github.com/fatihhyavuz/Power-BI-Project/tree/main/online-market%20project"
+   },
+   { 
+     src: "/media/projects/netflixeda.jpeg", 
+     category: "EDA", 
+     header: "Netflix Data Analysis", 
+     desc: "Exploring viewing trends and popular genres on Netflix.",
+     link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/netflix"
+   },
+   { 
+     src: "/media/projects/pizzasales.jpeg", 
+     category: "POWER BI", 
+     header: "Pizza Sales Insights", 
+     desc: "A look into pizza sales and customer preferences.",
+     link: "https://github.com/fatihhyavuz/Power-BI-Project/tree/main/Pizza%20Sales%20Project"
+   },
+   { 
+     src: "/media/projects/stdperform.jpeg", 
+     category: "EDA", 
+     header: "Student Performance Analysis", 
+     desc: "Analyzing student performance data for educational insights.",
+     link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Student-Performance-Factors-Analysis"
+   }
+ ];
+ const [currentSlide, setCurrentSlide] = useState(0);
+ const [activeFilter, setActiveFilter] = useState("all"); 
+ const [imagesPerSlide, setImagesPerSlide] = useState(1); 
+ const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+ // Tarayıcı yüklendiğinde ekran boyutuna göre ayarlar
+ useEffect(() => {
+   if (typeof window !== "undefined") {
+     const handleResize = () => {
+       setIsLargeScreen(window.innerWidth >= 1280);
+       setImagesPerSlide(window.innerWidth >= 1280 ? 8 : 1);
+     };
+     
+     handleResize(); // İlk yüklemede ekran boyutunu ayarla
+     window.addEventListener("resize", handleResize);
+     
+     return () => window.removeEventListener("resize", handleResize);
+   }
+ }, []);
   
   
 
@@ -138,11 +144,12 @@ const Carousel = () => {
   const endIndex = startIndex + imagesPerSlide;
 
   return (
-    <div id="portfolio" className="relative h-screen w-full bg-white p-10 pt-20 flex flex-col justify-center items-center">
-      <h1 className="text-4xl font-bold text-center text-blue-950 mb-5">PORTFOLIO</h1>
+    <div id="portfolio" className="relative h-screen w-full bg-white   p-10 pt-60 pb-12   2xl:p-10 2xl:pt-96 2xl:pb-40 flex flex-col justify-center items-center">
+    
+      <h1 className="text-3xl font-bold text-center pt-10 2xl-pt-20 pb-3 text-blue-950 ">PORTFOLIO</h1>
 
       {/* Filter Buttons */}
-      <div className="mb-6 flex space-x-4">
+      <div className="mb-2 flex space-x-4">
         {filters.map((filter) => (
           <button
             key={filter}
@@ -159,13 +166,13 @@ const Carousel = () => {
       {isLargeScreen ? (
      <div>
       {/* Carousel container */}
-<div className="grid gap-4 overflow-hidden rounded-lg h-[80%] w-full max-w-10xl min-w-5xl px-5 md:px-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:grid-rows-2">
+<div className="grid  gap-5 overflow-hidden rounded-lg h-[65%] w-full  p-5 py-5  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:grid-rows-2">
 
         {visibleImages.length > 0 ? (
           visibleImages.slice(startIndex, endIndex).map((image, index) => (
-            <div key={index} className="relative w-full h-80 md:h-48 lg:h-56 overflow-hidden rounded-md duration-700 ease-in-out image-container">
+            <div key={index} className="relative w-full h-95  overflow-hidden rounded-md duration-700 ease-in-out image-container">
             <a href={image.link} target="_blank" rel="noopener noreferrer">
-              <img src={image.src} className="w-full h-full object-cover" alt={image.header} />
+              <img src={image.src} className="w-full h-full object-cover " alt={image.header} />
             </a>
           
             {/* Overlay with button */}
