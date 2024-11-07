@@ -108,7 +108,7 @@ const Carousel = () => {
    if (typeof window !== "undefined") {
      const handleResize = () => {
        setIsLargeScreen(window.innerWidth >= 1280);
-       setImagesPerSlide(window.innerWidth >= 1280 ? 8 : 1);
+       setImagesPerSlide(window.innerWidth >= 1280 ? 8 :1);
      };
      
      handleResize(); // İlk yüklemede ekran boyutunu ayarla
@@ -144,9 +144,9 @@ const Carousel = () => {
   const endIndex = startIndex + imagesPerSlide;
 
   return (
-    <div id="portfolio" className="relative h-screen w-full bg-white   p-10 pt-60 pb-12   2xl:p-10 2xl:pt-96 2xl:pb-40 flex flex-col justify-center items-center">
+    <div id="portfolio" className="relative h-screen w-full bg-white p-10 pt-20 pb-12 xl:pt-60 2xl:pt-96 2xl:pb-40 flex flex-col justify-center items-center">
     
-      <h1 className="text-3xl font-bold text-center pt-10 2xl-pt-20 pb-3 text-blue-950 ">PORTFOLIO</h1>
+      <h1 className="text-3xl font-bold text-center pt-10 xl:pt-40 2xl-pt-80 pb-3 text-blue-950 ">PORTFOLIO</h1>
 
       {/* Filter Buttons */}
       <div className="mb-2 flex space-x-4">
@@ -166,13 +166,13 @@ const Carousel = () => {
       {isLargeScreen ? (
      <div>
       {/* Carousel container */}
-<div className="grid  gap-5 overflow-hidden rounded-lg h-[65%] w-full  p-5 py-5  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:grid-rows-2">
+<div className="grid  gap-5 overflow-hidden rounded-lg h-[60%] w-full  p-5 py-5  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:grid-rows-2">
 
         {visibleImages.length > 0 ? (
           visibleImages.slice(startIndex, endIndex).map((image, index) => (
-            <div key={index} className="relative w-full h-95  overflow-hidden rounded-md duration-700 ease-in-out image-container">
+            <div key={index} className="relative w-full h-90  overflow-hidden rounded-md duration-700 ease-in-out image-container">
             <a href={image.link} target="_blank" rel="noopener noreferrer">
-              <img src={image.src} className="w-full h-full object-cover " alt={image.header} />
+              <img src={image.src} className="w-full h-full object-cover min-h-80 min-w-96 " alt={image.header} />
             </a>
           
             {/* Overlay with button */}
@@ -193,7 +193,7 @@ const Carousel = () => {
       </div>
 
       {/* Slider indicators */}
-      <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+      <div className="absolute z-10 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
         {Array.from({ length: Math.ceil(visibleImages.length / imagesPerSlide) }).map((_, index) => (
           <button
             key={index}
@@ -231,27 +231,38 @@ const Carousel = () => {
      
       (
 
-        <div id="custom-carousel" className="relative w-full">
+        <div id="custom-carousel" className="relative h-full w-full  ">
         {/* Carousel wrapper */}
-        <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-          {visibleImages.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute duration-700 ease-in-out w-full h-full ${
-                index === currentSlide ? "block" : "hidden"
-              }`}
-            >
-              <img
-                src={image.src}
-                className="absolute block w-90% pb-20 h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                alt={image.header}
-              />
-            </div>
-          ))}
+        <div className="relative group h-56 overflow-hidden rounded-lg md:h-96">
+        {visibleImages.map((image, index) => (
+    <div
+      key={index}
+      className={`absolute duration-700 ease-in-out w-full h-full ${
+        index === currentSlide ? "block" : "hidden"
+      }`}
+    >
+      {/* Slayt resmi */}
+      <img
+        src={image.src}
+        className="absolute  block w-90% p-10 h-full  min-h-80 min-w-80 object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+        alt={image.header}
+      />
+
+      {/* Aşağıdan Yukarıya Çıkan Overlay */}
+      <div className="absolute inset-0 bg-white opacity-0 transform translate-y-full group-hover:opacity-90 group-hover:translate-y-0 transition-all duration-500 flex flex-col items-center justify-center text-center">
+        <h3 className="text-lg text-blue-700 font-bold mb-2">{image.header}</h3>
+        <p className="sm:text-sm mb-3">{image.desc}</p>
+        <a href={image.link} target="_blank" rel="noopener noreferrer">
+          <button className="px-4 py-2 bg-orange-700 text-white rounded-md hover:bg-blue-800">Learn More</button>
+        </a>
+      </div>
+    </div>
+  ))}
+
         </div>
       
         {/* Slider indicators */}
-        <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+        <div className="absolute z-10 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
           {visibleImages.map((_, index) => (
             <button
               key={index}
@@ -266,53 +277,29 @@ const Carousel = () => {
           ))}
         </div>
       
-        {/* Slider controls */}
-        <button
-          type="button"
-          className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-          onClick={handlePrev}
-        >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70">
-            <svg
-              className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 1 1 5l4 4"
-              />
-            </svg>
-            <span className="sr-only">Previous</span>
-          </span>
-        </button>
-        <button
-          type="button"
-          className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-          onClick={handleNext}
-        >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70">
-            <svg
-              className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m1 9 4-4-4-4"
-              />
-            </svg>
-            <span className="sr-only">Next</span>
-          </span>
-        </button>
+      {/* Slider controls */}
+      <button
+        
+        className="absolute -top-28 -left-10 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      >
+        <span  onClick={handlePrev} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 group-hover:bg-gray-800 group-focus:ring-4 group-focus:ring-gray-400">
+          <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
+          </svg>
+          <span className="sr-only">Önceki</span>
+        </span>
+      </button>
+      <button
+      
+        className="absolute -top-28  -right-10 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      >
+        <span   onClick={handleNext} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 group-hover:bg-gray-800 group-focus:ring-4 group-focus:ring-gray-400">
+          <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 9l4-4-4-4" />
+          </svg>
+          <span className="sr-only">Sonraki</span>
+        </span>
+      </button>
       </div>
       
       )}
