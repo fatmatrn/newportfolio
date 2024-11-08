@@ -233,7 +233,7 @@ const Carousel = () => {
 
         <div id="custom-carousel" className="relative h-full w-full  ">
         {/* Carousel wrapper */}
-        <div className="relative group h-56 overflow-hidden rounded-lg md:h-96">
+        <div className="relative group h-56 overflow-hidden rounded-lg md:h-96  ">
         {visibleImages.map((image, index) => (
     <div
       key={index}
