@@ -70,7 +70,8 @@ export default function RootLayout({ children }) {
                 </span>
               ))}
             </h1>
-            <h2 className="text-white text-2xl">DATA ANALYST&nbsp;&nbsp;|&nbsp;&nbsp;BI ANALYST</h2>
+            <h2 className="text-white text-2xl text-center">DATA SCIENTIST &nbsp;&nbsp;||&nbsp;&nbsp; AI & MACHINE LEARNING ENGINEER</h2>
+
 
             <div className="inline-flex pt-10 gap-5 space-x-2">
   <a href="https://www.linkedin.com/in/fatih-yavuzz" target="_blank" rel="noopener noreferrer">

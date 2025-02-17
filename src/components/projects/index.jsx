@@ -96,7 +96,51 @@ const Carousel = () => {
      header: "Student Performance Analysis", 
      desc: "Analyzing student performance data for educational insights.",
      link: "https://github.com/fatihhyavuz/EDA-Projects/tree/master/Student-Performance-Factors-Analysis"
+   },
+   { 
+     src: "/media/projects/houseprice.jpeg", 
+     category: "MACHINE LEARNING", 
+     header: "House Price Prediction ", 
+     desc: "XGBoost, AdaBoost, Gradient Boosting, and Random Forest were used to predict house prices.",
+     link: "https://www.kaggle.com/code/fatihyavuzz/house-price-prediction-advanced-regression"
+   },
+   { 
+     src: "/media/projects/ansur.jpeg", 
+     category: "MACHINE LEARNING", 
+     header: "Ansur 2 Classification ", 
+     desc: "Logistic Regression, SVM, Random Forest, XGBoost, AdaBoost, Gradient Boosting,Smote and LightGBM were implemented. ",
+     link: "https://www.kaggle.com/code/fatihyavuzz/ansur-ii-ml-supervised-project"
+   },
+   { 
+     src: "/media/projects/titanic.jpeg", 
+     category: "MACHINE LEARNING", 
+     header: "Titanic Survival Prediction ", 
+     desc: "Boosting models were used with grid search for hyperparameter tuning and model selection. ",
+     link: "https://www.kaggle.com/code/fatihyavuzz/titanic-survival-prediction-boosting-models"
+   },
+   { 
+     src: "/media/projects/raisen.jpeg", 
+     category: "MACHINE LEARNING", 
+     header: "Raisin Classification", 
+     desc: "Logistic Regression, KNN, and SVM were implemented and evaluated to select the best model for predicting raisin class",
+     link: "https://www.kaggle.com/code/fatihyavuzz/raisin-dataset-logistic-regression-knn-and-svm"
+   },
+   { 
+     src: "/media/projects/autoscout.jpeg", 
+     category: "MACHINE LEARNING", 
+     header: "Auto Scout Regression", 
+     desc: "Lasso, Ridge, and Linear Regression models were used to predict car prices and compare performances.",
+     link: "https://www.kaggle.com/code/fatihyavuzz/machine-learning-models-on-autoscout-dataset"
+   },
+   { 
+     src: "/media/projects/digit.jpeg", 
+     category: "MACHINE LEARNING", 
+     header: "Handwritten Digit Recognition", 
+     desc: "SVM, Random Forest, and XGBoost models were compared and the best was selected for digit classification.",
+     link: "https://www.kaggle.com/code/fatihyavuzz/hand-written-digits-svm-dt-rf-xgboost"
    }
+
+
  ];
  const [currentSlide, setCurrentSlide] = useState(0);
  const [activeFilter, setActiveFilter] = useState("all"); 
@@ -120,7 +164,7 @@ const Carousel = () => {
   
   
 
-  const filters = ["all", "EDA", "POWER BI", "TABLEAU"];
+  const filters = ["all","MACHINE LEARNING", "EDA", "POWER BI", "TABLEAU"];
 
   const visibleImages = images.filter((image) => activeFilter === "all" || image.category === activeFilter);
 
